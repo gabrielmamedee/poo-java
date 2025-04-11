@@ -1,30 +1,36 @@
 package aula05;
 
 public class ContaBanco {
+    //Atributos
     public int numConta;
     protected String tipo; //ou CC ou CP
     private String dono;
     private Double saldo;
     private boolean status;
 
-    public ContaBanco () {
-        this.status = false;
-        this.saldo = 00.0;
+    //Metodos personalizados
+    public void estadoAtual() {
+        System.out.println("Conta: " + this.getNumConta());
+        System.out.println("Tipo: " + this.getTipo());
+        System.out.println("Dono: " + this.getDono());
+        System.out.println("Saldo: " + this.getSaldo());
+        System.out.println("Status: " + this.isStatus());
     }
 
-    public void abrirConta(String tipo) {
+    public void abrirConta(String tipoConta) {
         //conta aberta = status true
         // tem que informar que tipo de conta é CP ou CC
         // abertura de CC = bonus de 50,00
         // abertura de CP = bonus de 150,00
-        setTipo(tipo);
-        setStatus(true);
+        this.setTipo(tipoConta);
+        this.setStatus(true);
 
-        if (this.tipo == "CP") {
+        if (tipoConta.equals("CP")) {
             this.setSaldo(150.00);
-        } else if (this.tipo == "CC") {
+        } else if (tipoConta.equals("CC")) {
             this.setSaldo(50.00);
         }
+        System.out.println("Conta aberta com sucesso!");
     }
 
     public void fecharConta() {
@@ -40,9 +46,9 @@ public class ContaBanco {
 
     public void depositar(Double valorDeposito) {
         // a conta precisa está ativa
-        if (this.status) {
+        if (this.isStatus()) {
             this.setSaldo(this.getSaldo() + valorDeposito);
-            System.out.println("Deposito realizado com sucesso, saldo atual = " + this.saldo);
+            System.out.println("Deposito realizado com sucesso, saldo atual = " + this.getSaldo());
         } else {
             System.out.println("Desculpe, para realizar depositos a conta precisa estar ativa!");
         }
@@ -54,6 +60,7 @@ public class ContaBanco {
         if (this.isStatus()) {
             if (this.getSaldo() >= valorSaque) {
                 this.setSaldo(this.getSaldo() - valorSaque);
+                System.out.println("Saque realizado na conta de " + this.getDono());
             } else {
                 System.out.println("Saldo insuficiente");
             }
@@ -78,7 +85,15 @@ public class ContaBanco {
             } else {
                 System.out.println("Impossível pagar, saldo insufuciente");
             }
+        } else {
+            System.out.println("Impossível pagar, a conta está inativa");
         }
+    }
+
+    //Metodos Especiais
+    public ContaBanco () {
+        this.setSaldo(00.0);
+        this.setStatus(false);
     }
 
     public int getNumConta() {
