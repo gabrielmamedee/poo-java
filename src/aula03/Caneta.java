@@ -3,11 +3,11 @@ package aula03;
 public class Caneta {
     public String modelo;
     public String cor;
-    private float ponta;
+    private Double ponta;
     protected int carga;
     private boolean tampada;
 
-    public void status() {
+    public void status () {
         System.out.println("Modelo: " + this.modelo);
         System.out.println("Uma caneta " + this.cor);
         System.out.println("Ponta: " + this.ponta);
@@ -15,11 +15,27 @@ public class Caneta {
         System.out.println("Está tampada? " + this.tampada);
     }
 
+    public void escrever() {
+        if (this.tampada) {
+            System.out.println("Não foi possivel escrever, a caneta está tampada!");
+        } else {
+            System.out.println("Escrevendo...");
+        }
+    }
+
     public void rabiscar() {
         if (this.tampada) {
-            System.out.println("ERRO! Não posso rabiscar");
+            System.out.println("Não foi possivel rabiscar, a caneta está tampada!");
         } else {
-            System.out.println("Estou Rabiscando");
+            System.out.println("Rabiscando...");
+        }
+    }
+
+    public void pintar() {
+        if (this.tampada) {
+            System.out.println("Não foi possivel pintar, a caneta está tampada!");
+        } else {
+            System.out.println("Pintando...");
         }
     }
 

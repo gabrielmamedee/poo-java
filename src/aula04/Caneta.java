@@ -1,16 +1,31 @@
 package aula04;
 
 public class Caneta {
-    private String modelo;
-    private float ponta;
+    public String modelo;
+    private Double ponta;
     private String cor;
     private boolean tampada;
 
-    public Caneta(String modelo, String cor, float ponta) {
-        this.setModelo(modelo);
-        this.setCor(cor);
-        this.setPonta(ponta);
-        this.tampar();
+    public Caneta(String modelo, Double ponta, String cor) {
+        this.modelo = modelo;
+        this.ponta = ponta;
+        this.cor = cor;
+    }
+
+    public void status() {
+        System.out.println("SOBRE A CANETA:");
+        System.out.println("Modelo: " + this.getModelo());
+        System.out.println("Ponta: " + this.getPonta());
+        System.out.println("Cor: " + this.cor);
+        System.out.println("Tampada: " + this.tampada);
+    }
+
+    public void tampar() {
+        this.tampada = true;
+    }
+
+    public void destampar() {
+        this.tampada = false;
     }
 
     public String getModelo() {
@@ -21,21 +36,13 @@ public class Caneta {
         this.modelo = modelo;
     }
 
-    public float getPonta() {
+    public Double getPonta() {
         return ponta;
     }
 
-    public void setPonta(float ponta) {
+    public void setPonta(Double ponta) {
         this.ponta = ponta;
     }
-
-   public void tampar() {
-        this.tampada = true;
-   }
-
-   public void destampar() {
-        this.tampada = false;
-   }
 
     public String getCor() {
         return cor;
@@ -51,13 +58,5 @@ public class Caneta {
 
     public void setTampada(boolean tampada) {
         this.tampada = tampada;
-    }
-
-    public void status() {
-        System.out.println("Sobre a caneta:");
-        System.out.println("Modelo: " + this.getModelo());
-        System.out.println("Ponta: " + this.getPonta());
-        System.out.println("Cor: " + this.cor);
-        System.out.println("Tampada: " + this.tampada);
     }
 }
